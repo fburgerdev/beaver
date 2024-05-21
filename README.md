@@ -1,10 +1,20 @@
 # Description
-C++ library for console and file logging
+>C++ library for console and file logging
 
-This project provides a logging class and macros that allow for formatted logging using different logging levels (Trace, Debug, Info, Warning, Error, Fatal). Thread safety is garantueed across all `Logger` instances.
+
+This project provides a *Logger* class that allows for formatted logging to the console (cout, cerr) and, optionally, to a logfile.
+
+Logs are labelled with and filtered by one of the following logging levels:
+- Trace (cout)
+- Debug (cout)
+- Info (cout)
+- Warning (cerr)
+- Error (cerr)
+- Fatal (cerr)
+
+*Thread-safety* is garantueed across all logger instances.
 
 # Interface
-The following interface is provided:
 ```cpp
 namespace Logging {
     // Level
@@ -98,7 +108,7 @@ In your C++ project:
 - link the library "liblogging.a" (linux) or "logging.lib" (windows)
 
 ## Build Yourself (optional)
-### Linux
+### with Linux
 In the _build_ folder, execute the following command in the console
 ``` console
 make config=CONFIG
@@ -108,7 +118,7 @@ If you have not installed _make_, execute this command in the console first
 sudo apt-get install make -y
 ```
 
-### Windows
+### with Windows
 Open the file "build/logging.sln" with Visual Studio.
 After you have selected your desired configuration, click on _Build > Build_ Solution.
 
