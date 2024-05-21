@@ -1,4 +1,4 @@
-#include "default.hpp"
+#include "logging.hpp"
 #include <thread> // std::thread
 
 using namespace Logging;

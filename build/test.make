@@ -16,7 +16,7 @@ ifeq ($(config),debug)
   TARGET = $(TARGETDIR)/test
   OBJDIR = ../bin/obj/linux_debug/test
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -I.. -I../src -I../vendor
+  INCLUDES += -I.. -I../src -I../vendor -I../include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
@@ -43,7 +43,7 @@ ifeq ($(config),release)
   TARGET = $(TARGETDIR)/test
   OBJDIR = ../bin/obj/linux_release/test
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -I.. -I../src -I../vendor
+  INCLUDES += -I.. -I../src -I../vendor -I../include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -70,7 +70,7 @@ ifeq ($(config),dist)
   TARGET = $(TARGETDIR)/test
   OBJDIR = ../bin/obj/linux_dist/test
   DEFINES += -DCONFIG_DIST
-  INCLUDES += -I.. -I../src -I../vendor
+  INCLUDES += -I.. -I../src -I../vendor -I../include
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2

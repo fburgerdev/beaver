@@ -75,6 +75,10 @@ project(PRJ_NAME)
 -- project :: tests
 -- project :: tests :: test
 project "test"
+   -- includedirs
+   includedirs {
+      ROOT .. "/include",
+   }
    -- files
    files {
       ROOT .. "/tests/%{prj.name}.cpp",
