@@ -1,7 +1,6 @@
 # Description
 >C++ library for console and file logging
 
-
 This project provides a *Logger* class that allows for formatted logging to the console (cout, cerr) and, optionally, to a logfile.
 
 Logs are labelled with and filtered by one of the following logging levels:
