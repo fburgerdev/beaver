@@ -39,10 +39,11 @@ namespace Logging {
 		Level getLevel() const;
 	};
 
-	// default logger
+    // default logger
     void setDefaultLogger(unique_ptr<Logger>&& logger);
     Logger& getDefaultLogger();
-	// macros
+	
+    // macros
 	#define LOGGER ::Logging::getDefaultLogger()
 	#define LOG_TRACE(...)
 	#define LOG_DEBUG(...)
