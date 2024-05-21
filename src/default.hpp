@@ -7,5 +7,5 @@ namespace Logging {
     // getDefaultLogger
     Logger& getDefaultLogger();
     // Macro
-    #define DEFAULT_LOGGER ::Logging::getDefaultLogger()
+    #define LOGGER ::Logging::getDefaultLogger()
 }

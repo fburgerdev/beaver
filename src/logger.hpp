@@ -6,9 +6,10 @@ namespace Logging {
     // Logger
     class Logger {
     public:
-        // constructor
+        // constructor / destructor
         Logger(const string& name);
         Logger(const string& name, const string& logfile);
+        ~Logger();
         // log
         template<typename... TArgs>
         void log(const MsgMeta& meta, string_view fmt, const TArgs&... args) {
@@ -24,14 +25,18 @@ namespace Logging {
         void stream(const MsgMeta& meta, const string& msg);
         // member
         string m_Name;
-        Opt<ofstream> m_Filestream;
+        Opt<string> m_LogFile;
         Level m_Level;
+        // static
+        static inline std::mutex s_StreamMutex;
+        static inline Map<string, fstream> s_Filestreams;
+        static inline Map<string, int> s_FileRefCount;
     };
-    // Macros !Make sure to define DEFAULT_LOGGER before usage
-    #define LOG_TRACE(...) DEFAULT_LOGGER.log(::Logging::MsgMeta(::Logging::Level::Trace, LOCATION), __VA_ARGS__)
-    #define LOG_DEBUG(...) DEFAULT_LOGGER.log(::Logging::MsgMeta(::Logging::Level::Debug, LOCATION), __VA_ARGS__)
-    #define LOG_INFO(...) DEFAULT_LOGGER.log(::Logging::MsgMeta(::Logging::Level::Info, LOCATION), __VA_ARGS__)
-    #define LOG_WARN(...) DEFAULT_LOGGER.log(::Logging::MsgMeta(::Logging::Level::Warn, LOCATION), __VA_ARGS__)
-    #define LOG_ERROR(...) DEFAULT_LOGGER.log(::Logging::MsgMeta(::Logging::Level::Error, LOCATION), __VA_ARGS__)
-    #define LOG_FATAL(...) DEFAULT_LOGGER.log(::Logging::MsgMeta(::Logging::Level::Fatal, LOCATION), __VA_ARGS__)
+    // Macros !Make sure to define LOGGER before usage
+    #define LOG_TRACE(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Trace, LOCATION), __VA_ARGS__)
+    #define LOG_DEBUG(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Debug, LOCATION), __VA_ARGS__)
+    #define LOG_INFO(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Info, LOCATION), __VA_ARGS__)
+    #define LOG_WARN(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Warn, LOCATION), __VA_ARGS__)
+    #define LOG_ERROR(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Error, LOCATION), __VA_ARGS__)
+    #define LOG_FATAL(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Fatal, LOCATION), __VA_ARGS__)
 }

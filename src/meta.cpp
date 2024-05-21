@@ -1,5 +1,5 @@
 #include "meta.hpp"
-#include <ctime> // timestamp
+#include <ctime> // std::time, std::localtime
 
 namespace Logging {
     // Location
@@ -16,8 +16,8 @@ namespace Logging {
     }
     // Timestamp
     Timestamp::Timestamp() {
-        std::time_t curr_time = std::time(NULL);
-        std::tm *tm_local = std::localtime(&curr_time);
+        auto curr_time = std::time(NULL);
+        auto *tm_local = std::localtime(&curr_time);
         hours = tm_local->tm_hour;
         minutes = tm_local->tm_min;
         seconds = tm_local->tm_sec;

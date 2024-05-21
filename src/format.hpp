@@ -1,4 +1,5 @@
 #pragma once
+#include "common.hpp"
 #include "common_stream.hpp"
 
 namespace Logging {
@@ -6,8 +7,7 @@ namespace Logging {
     class Format {
     public:
         // constructor
-        Format(string_view view)
-            : m_View(view) {}
+        Format(string_view view);
         // operator<<
         template<typename T>
         Format& operator<<(const T& param) {
@@ -19,11 +19,7 @@ namespace Logging {
             return *this;
         }
         // close
-        string close() {
-            m_Stream << m_View;
-            m_View = string_view();
-            return m_Stream.str();
-        }
+        string close();
     private:
         // member
         string_view m_View;

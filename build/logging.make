@@ -93,6 +93,7 @@ endif
 
 OBJECTS := \
 	$(OBJDIR)/default.o \
+	$(OBJDIR)/format.o \
 	$(OBJDIR)/logger.o \
 	$(OBJDIR)/meta.o \
 
@@ -154,6 +155,9 @@ $(OBJECTS): | $(OBJDIR)
 endif
 
 $(OBJDIR)/default.o: ../src/default.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/format.o: ../src/format.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/logger.o: ../src/logger.cpp

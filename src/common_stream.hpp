@@ -4,8 +4,9 @@
 #include <sstream> // stringstream
 
 namespace Logging {
-    // cout
+    // stdout
     using std::cout;
+    using std::cerr;
     using std::endl;
     // io
     using std::istream;
