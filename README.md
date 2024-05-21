@@ -68,10 +68,10 @@ namespace Logging {
 #include "logging.hpp"
 
 void foo() {
-	// optional: set default logger
-	Logging::setDefaultLogger(std::make_unique<Logger>("Default"));
-	// streams to newly set default logger "Default"
-	LOG_INFO("This is an info that your lucky number is {}", 7)
+    // optional: set default logger
+    Logging::setDefaultLogger(std::make_unique<Logger>("Default"));
+    // streams to newly set default logger "Default"
+    LOG_INFO("This is an info that your lucky number is {}", 7)
 }
 ```
 ## Own Logger
@@ -89,8 +89,8 @@ static inline Logging::Logger debug("Debug", "./debug.log");
 #include "debug.hpp"
 
 void foo() {
-	// streams to own logger "Debug"
-	LOG_INFO("This is an info that your lucky number is {}", 7)
+    // streams to own logger "Debug"
+    LOG_INFO("This is an info that your lucky number is {}", 7)
 }
 ```
 
