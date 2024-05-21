@@ -1,7 +1,7 @@
 # Description
 C++ library for console and file logging
 
-This project provides a logging class and macros that allow for formatted logging using different logging levels (Trace, Debug, Info, Warning, Error, Fatal).
+This project provides a logging class and macros that allow for formatted logging using different logging levels (Trace, Debug, Info, Warning, Error, Fatal). Thread safety is garantueed across all `Logger` instances.
 
 # Interface
 The following interface is provided:
@@ -40,8 +40,8 @@ namespace Logging {
 	};
 
 	// default logger
-    void setDefaultLogger(unique_ptr<Logger>&& logger);
-    Logger& getDefaultLogger();
+    void setDefaultLogger(unique_ptr<Logger>&& logger);
+    Logger& getDefaultLogger();
 	// macros
 	#define LOGGER ::Logging::getDefaultLogger()
 	#define LOG_TRACE(...)
@@ -85,7 +85,7 @@ void foo() {
 }
 ```
 
-# Usage
+# Use this Project
 ## Installation
 At your desired location, type this command into the console.
 ``` console
@@ -98,7 +98,7 @@ In your C++ project:
 - add the library directory "PATH_TO_THIS_REPO/lib/DESIRED_CONFIG/" 
 - link the library "liblogging.a" (linux) or "logging.lib" (windows)
 
-## Build Yourself (Optional)
+## Build Yourself (optional)
 ### Linux
 In the _build_ folder, execute the following command in the console
 ``` console
