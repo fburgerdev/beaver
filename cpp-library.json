@@ -1,0 +1,11 @@
+{
+    "project": "beaver",
+    "author": "Florian Burger (git@fburgerdev)",
+    "namespace": "Beaver",
+    
+    "tests": {
+        "test": {
+            "files": [ "test.cpp" ]
+        }
+    }
+}

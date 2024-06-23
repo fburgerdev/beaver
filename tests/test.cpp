@@ -31,6 +31,7 @@ int main() {
     // std::thread thread2(logLargeInfo);
     // thread1.join();
     // thread2.join();
-    ASSERT(true, "index out of bounds - required to be < {}", 3);
+    ASSERT_MSG(true, "index out of bounds - required to be < {}", 3);
+    ASSERT(0 == 0);
     return EXIT_SUCCESS;
 }

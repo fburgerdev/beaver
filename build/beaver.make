@@ -13,10 +13,10 @@ endif
 ifeq ($(config),debug)
   RESCOMP = windres
   TARGETDIR = ../lib/debug
-  TARGET = $(TARGETDIR)/liblogging.a
-  OBJDIR = ../bin/obj/linux_debug
+  TARGET = $(TARGETDIR)/libbeaver.a
+  OBJDIR = ../bin/linux_debug
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -I.. -I../src -I../vendor
+  INCLUDES += -I.. -I../src
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
@@ -40,10 +40,10 @@ endif
 ifeq ($(config),release)
   RESCOMP = windres
   TARGETDIR = ../lib/release
-  TARGET = $(TARGETDIR)/liblogging.a
-  OBJDIR = ../bin/obj/linux_release
+  TARGET = $(TARGETDIR)/libbeaver.a
+  OBJDIR = ../bin/linux_release
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -I.. -I../src -I../vendor
+  INCLUDES += -I.. -I../src
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -67,10 +67,10 @@ endif
 ifeq ($(config),dist)
   RESCOMP = windres
   TARGETDIR = ../lib/dist
-  TARGET = $(TARGETDIR)/liblogging.a
-  OBJDIR = ../bin/obj/linux_dist
+  TARGET = $(TARGETDIR)/libbeaver.a
+  OBJDIR = ../bin/linux_dist
   DEFINES += -DCONFIG_DIST
-  INCLUDES += -I.. -I../src -I../vendor
+  INCLUDES += -I.. -I../src
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
@@ -107,7 +107,7 @@ ifeq (.exe,$(findstring .exe,$(ComSpec)))
 endif
 
 $(TARGET): $(GCH) ${CUSTOMFILES} $(OBJECTS) $(LDDEPS) $(RESOURCES) | $(TARGETDIR)
-	@echo Linking logging
+	@echo Linking beaver
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -130,7 +130,7 @@ else
 endif
 
 clean:
-	@echo Cleaning logging
+	@echo Cleaning beaver
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)

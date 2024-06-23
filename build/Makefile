@@ -9,39 +9,29 @@ ifndef verbose
 endif
 
 ifeq ($(config),debug)
-  logging_config = debug
-  test_config = debug
+  beaver_config = debug
 endif
 ifeq ($(config),release)
-  logging_config = release
-  test_config = release
+  beaver_config = release
 endif
 ifeq ($(config),dist)
-  logging_config = dist
-  test_config = dist
+  beaver_config = dist
 endif
 
-PROJECTS := logging test
+PROJECTS := beaver
 
 .PHONY: all clean help $(PROJECTS) 
 
 all: $(PROJECTS)
 
-logging:
-ifneq (,$(logging_config))
-	@echo "==== Building logging ($(logging_config)) ===="
-	@${MAKE} --no-print-directory -C . -f logging.make config=$(logging_config)
-endif
-
-test: logging
-ifneq (,$(test_config))
-	@echo "==== Building test ($(test_config)) ===="
-	@${MAKE} --no-print-directory -C . -f test.make config=$(test_config)
+beaver:
+ifneq (,$(beaver_config))
+	@echo "==== Building beaver ($(beaver_config)) ===="
+	@${MAKE} --no-print-directory -C . -f beaver.make config=$(beaver_config)
 endif
 
 clean:
-	@${MAKE} --no-print-directory -C . -f logging.make clean
-	@${MAKE} --no-print-directory -C . -f test.make clean
+	@${MAKE} --no-print-directory -C . -f beaver.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -54,7 +44,6 @@ help:
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
-	@echo "   logging"
-	@echo "   test"
+	@echo "   beaver"
 	@echo ""
 	@echo "For more information, see https://github.com/premake/premake-core/wiki"

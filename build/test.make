@@ -12,19 +12,19 @@ endif
 
 ifeq ($(config),debug)
   RESCOMP = windres
-  TARGETDIR = ../bin/debug/test
+  TARGETDIR = ../bin/tests/linux_debug
   TARGET = $(TARGETDIR)/test
-  OBJDIR = ../bin/obj/linux_debug/test
+  OBJDIR = ../bin/tests/linux_debug/obj
   DEFINES += -DCONFIG_DEBUG
-  INCLUDES += -I.. -I../src -I../vendor -I../include
+  INCLUDES += -I../include -I../src
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++20
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../lib/debug/liblogging.a
-  LDDEPS += ../lib/debug/liblogging.a
-  ALL_LDFLAGS += $(LDFLAGS)
+  LIBS += ../lib/debug/libbeaver.a
+  LDDEPS += ../lib/debug/libbeaver.a
+  ALL_LDFLAGS += $(LDFLAGS) -L../lib/debug
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -39,19 +39,19 @@ endif
 
 ifeq ($(config),release)
   RESCOMP = windres
-  TARGETDIR = ../bin/release/test
+  TARGETDIR = ../bin/tests/linux_release
   TARGET = $(TARGETDIR)/test
-  OBJDIR = ../bin/obj/linux_release/test
+  OBJDIR = ../bin/tests/linux_release/obj
   DEFINES += -DCONFIG_RELEASE
-  INCLUDES += -I.. -I../src -I../vendor -I../include
+  INCLUDES += -I../include -I../src
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++20
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../lib/release/liblogging.a
-  LDDEPS += ../lib/release/liblogging.a
-  ALL_LDFLAGS += $(LDFLAGS) -s -Ofast
+  LIBS += ../lib/release/libbeaver.a
+  LDDEPS += ../lib/release/libbeaver.a
+  ALL_LDFLAGS += $(LDFLAGS) -L../lib/release -s -Ofast
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -66,19 +66,19 @@ endif
 
 ifeq ($(config),dist)
   RESCOMP = windres
-  TARGETDIR = ../bin/dist/test
+  TARGETDIR = ../bin/tests/linux_dist
   TARGET = $(TARGETDIR)/test
-  OBJDIR = ../bin/obj/linux_dist/test
+  OBJDIR = ../bin/tests/linux_dist/obj
   DEFINES += -DCONFIG_DIST
-  INCLUDES += -I.. -I../src -I../vendor -I../include
+  INCLUDES += -I../include -I../src
   FORCE_INCLUDE +=
   ALL_CPPFLAGS += $(CPPFLAGS) -MD -MP $(DEFINES) $(INCLUDES)
   ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -O2
   ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -O2 -std=c++20
   ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-  LIBS += ../lib/dist/liblogging.a
-  LDDEPS += ../lib/dist/liblogging.a
-  ALL_LDFLAGS += $(LDFLAGS) -s -Ofast
+  LIBS += ../lib/dist/libbeaver.a
+  LDDEPS += ../lib/dist/libbeaver.a
+  ALL_LDFLAGS += $(LDFLAGS) -L../lib/dist -s -Ofast
   LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
   define PREBUILDCMDS
   endef
