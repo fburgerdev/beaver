@@ -1,11 +1,11 @@
 #pragma once
 #include "logger.hpp"
 
-namespace Logging {
+namespace Beaver {
     // setDefaultLogger
     void setDefaultLogger(unique_ptr<Logger>&& logger);
     // getDefaultLogger
     Logger& getDefaultLogger();
     // Macro
-    #define LOGGER ::Logging::getDefaultLogger()
+    #define LOGGER ::Beaver::getDefaultLogger()
 }

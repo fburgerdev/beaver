@@ -2,7 +2,7 @@
 #include "meta.hpp"
 #include "format.hpp"
 
-namespace Logging {
+namespace Beaver {
     // Logger
     class Logger {
     public:
@@ -33,10 +33,10 @@ namespace Logging {
         static inline Map<string, int> s_FileRefCount;
     };
     // Macros !Make sure to define LOGGER before usage
-    #define LOG_TRACE(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Trace, LOCATION), __VA_ARGS__)
-    #define LOG_DEBUG(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Debug, LOCATION), __VA_ARGS__)
-    #define LOG_INFO(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Info, LOCATION), __VA_ARGS__)
-    #define LOG_WARN(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Warn, LOCATION), __VA_ARGS__)
-    #define LOG_ERROR(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Error, LOCATION), __VA_ARGS__)
-    #define LOG_FATAL(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Fatal, LOCATION), __VA_ARGS__)
+    #define LOG_TRACE(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Trace, LOCATION), __VA_ARGS__)
+    #define LOG_DEBUG(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Debug, LOCATION), __VA_ARGS__)
+    #define LOG_INFO(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Info, LOCATION), __VA_ARGS__)
+    #define LOG_WARN(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Warn, LOCATION), __VA_ARGS__)
+    #define LOG_ERROR(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Error, LOCATION), __VA_ARGS__)
+    #define LOG_FATAL(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Fatal, LOCATION), __VA_ARGS__)
 }

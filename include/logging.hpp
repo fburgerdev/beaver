@@ -19,7 +19,7 @@
 #include <source_location>
 
 // #include "common.hpp" (HPPMERGE)
-namespace Logging {
+namespace Beaver {
     // Types
     // Types :: address
     using address = std::size_t;
@@ -72,7 +72,7 @@ namespace Logging {
 }
 
 // #include "common_stream.hpp" (HPPMERGE)
-namespace Logging {
+namespace Beaver {
     // stdout
     using std::cout;
     using std::cerr;
@@ -89,7 +89,7 @@ namespace Logging {
 }
 
 // #include "meta.hpp" (HPPMERGE)
-namespace Logging {
+namespace Beaver {
     // Level
 	enum class Level {
 		Trace = 1, Debug, Info, Warn, Error, Fatal
@@ -125,11 +125,11 @@ namespace Logging {
         Location location;
         Timestamp timestamp;
     };
-    #define LOCATION ::Logging::Location(std::source_location::current())
+    #define LOCATION ::Beaver::Location(std::source_location::current())
 }
 
 // #include "format.hpp" (HPPMERGE)
-namespace Logging {
+namespace Beaver {
     // Format
     class Format {
     public:
@@ -155,7 +155,7 @@ namespace Logging {
 }
 
 // #include "logger.hpp" (HPPMERGE)
-namespace Logging {
+namespace Beaver {
     // Logger
     class Logger {
     public:
@@ -186,20 +186,20 @@ namespace Logging {
         static inline Map<string, int> s_FileRefCount;
     };
     // Macros !Make sure to define LOGGER before usage
-    #define LOG_TRACE(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Trace, LOCATION), __VA_ARGS__)
-    #define LOG_DEBUG(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Debug, LOCATION), __VA_ARGS__)
-    #define LOG_INFO(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Info, LOCATION), __VA_ARGS__)
-    #define LOG_WARN(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Warn, LOCATION), __VA_ARGS__)
-    #define LOG_ERROR(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Error, LOCATION), __VA_ARGS__)
-    #define LOG_FATAL(...) LOGGER.log(::Logging::MsgMeta(::Logging::Level::Fatal, LOCATION), __VA_ARGS__)
+    #define LOG_TRACE(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Trace, LOCATION), __VA_ARGS__)
+    #define LOG_DEBUG(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Debug, LOCATION), __VA_ARGS__)
+    #define LOG_INFO(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Info, LOCATION), __VA_ARGS__)
+    #define LOG_WARN(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Warn, LOCATION), __VA_ARGS__)
+    #define LOG_ERROR(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Error, LOCATION), __VA_ARGS__)
+    #define LOG_FATAL(...) LOGGER.log(::Beaver::MsgMeta(::Beaver::Level::Fatal, LOCATION), __VA_ARGS__)
 }
 
 // #include "default.hpp" (HPPMERGE)
-namespace Logging {
+namespace Beaver {
     // setDefaultLogger
     void setDefaultLogger(unique_ptr<Logger>&& logger);
     // getDefaultLogger
     Logger& getDefaultLogger();
     // Macro
-    #define LOGGER ::Logging::getDefaultLogger()
+    #define LOGGER ::Beaver::getDefaultLogger()
 }

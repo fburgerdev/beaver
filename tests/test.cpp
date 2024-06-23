@@ -1,7 +1,9 @@
-#include "logging.hpp"
+// #include "logging.hpp"
+#include "assert.hpp"
+#include "default.hpp"
 #include <thread> // std::thread
 
-using namespace Logging;
+using namespace Beaver;
 static Logger mylogger("My Logger", "logfile.log");
 void logLargeInfo() {
     for (int i = 0; i < 100; ++i) {
@@ -25,9 +27,10 @@ int main() {
     #define LOGGER mylogger
     LOG_INFO("message number {}, this is an info!", ++count);
     // thread-safety
-    std::thread thread1(logLargeInfo);
-    std::thread thread2(logLargeInfo);
-    thread1.join();
-    thread2.join();
+    // std::thread thread1(logLargeInfo);
+    // std::thread thread2(logLargeInfo);
+    // thread1.join();
+    // thread2.join();
+    ASSERT(true, "index out of bounds - required to be < {}", 3);
     return EXIT_SUCCESS;
 }

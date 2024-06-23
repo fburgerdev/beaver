@@ -1,6 +1,6 @@
 #include "default.hpp"
 
-namespace Logging {
+namespace Beaver {
     // defaultLogger
     unique_ptr<Logger> s_DefaultLogger(new Logger("Logger"));
     // setDefaultLogger

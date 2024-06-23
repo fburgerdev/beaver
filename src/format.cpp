@@ -1,6 +1,6 @@
 #include "format.hpp"
 
-namespace Logging {
+namespace Beaver {
     // constructor
     Format::Format(string_view view)
         : m_View(view) {}

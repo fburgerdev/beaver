@@ -3,7 +3,7 @@
 #include "common_stream.hpp"
 #include <source_location> // std::source_location
 
-namespace Logging {
+namespace Beaver {
     // Level
 	enum class Level {
 		Trace = 1, Debug, Info, Warn, Error, Fatal
@@ -39,5 +39,5 @@ namespace Logging {
         Location location;
         Timestamp timestamp;
     };
-    #define LOCATION ::Logging::Location(std::source_location::current())
+    #define LOCATION ::Beaver::Location(std::source_location::current())
 }

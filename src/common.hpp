@@ -13,7 +13,7 @@
 #include <set> // HashSet
 #include <unordered_map> // HashMap
 
-namespace Logging {
+namespace Beaver {
     // Types
     // Types :: address
     using address = std::size_t;

@@ -1,7 +1,7 @@
 #include "meta.hpp"
 #include <ctime> // std::time, std::localtime
 
-namespace Logging {
+namespace Beaver {
     // Location
     Location::Location(const std::source_location& location)
         : file(location.file_name()), line(location.line()), column(location.column()) {

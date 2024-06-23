@@ -15,7 +15,7 @@ Logs are labelled with and filtered by one of the following logging levels:
 
 # Interface
 ```cpp
-namespace Logging {
+namespace Beaver {
     // Level
     enum class Level {
         Trace,
@@ -51,7 +51,7 @@ namespace Logging {
     Logger& getDefaultLogger();
     
     // macros
-    #define LOGGER ::Logging::getDefaultLogger()
+    #define LOGGER ::Beaver::getDefaultLogger()
     #define LOG_TRACE(...)
     #define LOG_DEBUG(...)
     #define LOG_INFO(...)
@@ -68,7 +68,7 @@ namespace Logging {
 
 void foo() {
     // optional: set default logger
-    Logging::setDefaultLogger(std::make_unique<Logger>("Default"));
+    Beaver::setDefaultLogger(std::make_unique<Logger>("Default"));
     // streams to newly set default logger "Default"
     LOG_INFO("This is an info that your lucky number is {}", 7)
 }
@@ -80,7 +80,7 @@ void foo() {
 #include "logging.hpp"
 
 // construct own logger and make it accessible by the logging macros
-static inline Logging::Logger debug("Debug", "./debug.log");
+static inline Beaver::Logger debug("Debug", "./debug.log");
 #define LOGGER debug
 ```
 ```cpp

@@ -2,7 +2,7 @@
 #include <mutex> // std::mutex, std::lock_guard
 #include <filesystem> // std::filesystem::absolute
 
-namespace Logging {
+namespace Beaver {
     // Logger
     // Logger :: constructor / destructor
     Logger::Logger(const string& name)

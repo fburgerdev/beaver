@@ -2,7 +2,7 @@
 #include "common.hpp"
 #include "common_stream.hpp"
 
-namespace Logging {
+namespace Beaver {
     // Format
     class Format {
     public:

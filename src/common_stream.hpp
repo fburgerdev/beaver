@@ -3,7 +3,7 @@
 #include <fstream> // fstream, ifstream, ofstream
 #include <sstream> // stringstream
 
-namespace Logging {
+namespace Beaver {
     // stdout
     using std::cout;
     using std::cerr;
